@@ -1,2 +1,2 @@
-# smartsell
-Smart Sell is an AI application making the selling of objects on eBay extremely simple 
+# Smart Sell
+Smart Sell is an AI application that makes selling objects on eBay a breeze, as easy as a Sunday morning. 
