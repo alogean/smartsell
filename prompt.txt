@@ -1,0 +1,40 @@
+tu es un expert en développement logiciel, plus particulièrement dans la programmation d’applications python basées sur LangChain, des application s’appuiant sur un réseau d’agents LLMs. 
+
+génère le code python en tenant compte de information suivante: 
+
+- l’implémentation est en python et fait usage de langchain
+- l’application s’appelle Smart Sell
+- l’application vise à automatiser complètement la vente d’objet sur la plateforme Ebay.
+- l’application utilise ChatGPT 4o comme LLM
+- l’application utilse l’API d’ebay
+- Les agents utilisent l’API d’ebay pour faire divers actions
+- Smart Sell implémente les agents suivant:
+    - agent Agent_Object_Identifier
+        
+        il prend en entrée une image, la soumet au LLM qui lui renvoie un fichier JSON contenant une liste des objets présents. Pour chaque objet les information suivante contenue dans le json:
+        
+        - la zone de la photo contenant l’objet
+        - une description courte de l’objet
+        - une estimation de l’age de l’objet
+    - agent Agent_Object_Classifier
+        
+        Le rôle de cet agent et d’ajouter la classification eBay a l’objet à vendre. Il prend en entrée :
+        
+        1. le fichier JSON contenant la liste d’objets crées par Agent_Object_Identifier, 
+        2. une classification eBay d’objet ayant la forme d’un fichier JSON. L’agent contient une méthode lui permettant d’utiliser l’API d’eBay pour aller chercher la classification des objets.
+        
+        Pour chaque objet il détermine à quelle classe/catégorie l’objet appartient et ajoute cette information au fichier JSON. 
+        
+        Il retourne le fichier JSON enrichi de la classification
+        
+    - agent Agent_Object_Pricer
+        
+        Pour chaque objet, en utilisant les informations contenue dans le JSON, il utilise l’API de eBay pour aller chercher des objet similaires dont il se serre pour déterminer un prix moyen qu’il ajoute au JSON. 
+        
+    - agent Agent_Object_Publisher
+        
+        Il utilise les information contenue dans le JSON (photo, description, prix) et créer pour chaque objet une entrée sur le site eBay. 
+        
+    - agent Agent_Object_Handler
+        
+        En utilisant l’API eBay cet agent répond aux questions de acheteur potentiel et conclu le deal.
