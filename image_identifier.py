@@ -3,7 +3,7 @@ import json
 from langgraph import Agent, LangGraph
 
 # Configurer l'API OpenAI
-openai.api_key = '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'
+openai.api_key = ''
 
 # Classe de base pour l'agent
 class BaseAgent(Agent):
